@@ -327,7 +327,6 @@ function HomePage() {
         <UpcomingEvents />
         <Faq />
       </main>
-      <Footer />
     </>
   );
 }
@@ -419,6 +418,7 @@ export default function App() {
             <Route path="/dashboard/events/new" element={<AdminDashboardRoute page="new-event" />} />
             <Route path="/registration" element={<RegistrationRoute />} />
           </Routes>
+          <Footer />
         </div>
       </AuthProvider>
     </BrowserRouter>
