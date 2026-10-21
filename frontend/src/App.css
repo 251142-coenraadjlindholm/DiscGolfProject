@@ -249,6 +249,7 @@ button { font: inherit; cursor: pointer; }
 }
 .footer__links, .footer__contact { list-style: none; display: grid; gap: 0.6rem; }
 .footer a:hover, .footer a:focus-visible { text-decoration: underline; }
+.footer__student-project { margin: 0; color: var(--mist); font-size: var(--body-sm); }
 .footer__logo { height: 7rem; }
 
 /*Responsive layout*/

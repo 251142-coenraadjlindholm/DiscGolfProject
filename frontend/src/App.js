@@ -302,6 +302,10 @@ function Footer() {
         <a href="tel:0794917034">079 491 7034</a>
       </div>
 
+      <p className="footer__student-project">
+        This is a student project from Open Window.
+      </p>
+
       <img
         className="footer__logo"
         src={dgsaLogo}
