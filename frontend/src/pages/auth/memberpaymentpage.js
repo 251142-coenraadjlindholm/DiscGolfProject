@@ -37,10 +37,10 @@ export default function MembershipPaymentPage({ amount = 370, onPay }) {
 
   return (
     <AuthLayout pagePrefix="memberPayment" title="Become a Member" image={memberHero} imageAlt="Disc golfer in a South Africa jersey">
-      <Row className="memberPaymentSummary align-items-start">
+      <Row className="memberPaymentSummaryPage align-items-start">
         <Col>
-          <h2 className="mpay__heading">DGSA Banking Details</h2>
-          <dl className="mpay__details">
+          <h2 className="memberPaymentHeadingPage">DGSA Banking Details</h2>
+          <dl className="memberPaymentDetailsPage">
             <div><dt>Bank:</dt><dd>{BANKING.bank}</dd></div>
             <div><dt>Account Number:</dt><dd>{BANKING.accountNumber}</dd></div>
             <div><dt>Account Type:</dt><dd>{BANKING.accountType}</dd></div>
@@ -48,23 +48,23 @@ export default function MembershipPaymentPage({ amount = 370, onPay }) {
             <div><dt>Reference:</dt><dd>{BANKING.reference}</dd></div>
           </dl>
         </Col>
-        <Col xs="auto" className="mpay__amount">
-          <span className="mpay__amount-label">Amount Payable</span>
-          <span className="mpay__amount-value">R{amount}</span>
+        <Col xs="auto" className="memberPaymentAmountPage">
+          <span className="memberPaymentAmountLabelPage">Amount Payable</span>
+          <span className="memberPaymentAmountValuePage">R{amount}</span>
         </Col>
       </Row>
 
       <Form onSubmit={handleSubmit} noValidate className="d-flex flex-column gap-3 flex-grow-1">
-        <p className="memberPaymentLabel mb-0">Demo payment details</p>
-        {error && <Alert className="memberPaymentAlert" variant="danger">{error}</Alert>}
-        <Form.Control className="memberPaymentInput" placeholder="Name on card" value={details.name} onChange={update("name")} />
-        <Form.Control className="memberPaymentInput" inputMode="numeric" placeholder="Card number" value={details.number} onChange={update("number")} />
+        <p className="memberPaymentLabelPage mb-0">Demo payment details</p>
+        {error && <Alert className="memberPaymentAlertPage" variant="danger">{error}</Alert>}
+        <Form.Control className="memberPaymentInputPage" placeholder="Name on card" value={details.name} onChange={update("name")} />
+        <Form.Control className="memberPaymentInputPage" inputMode="numeric" placeholder="Card number" value={details.number} onChange={update("number")} />
         <Row className="g-3">
-          <Col><Form.Control className="memberPaymentInput" placeholder="MM/YY" value={details.expiry} onChange={update("expiry")} /></Col>
-          <Col><Form.Control className="memberPaymentInput" inputMode="numeric" placeholder="CVV" value={details.cvv} onChange={update("cvv")} /></Col>
+          <Col><Form.Control className="memberPaymentInputPage" placeholder="MM/YY" value={details.expiry} onChange={update("expiry")} /></Col>
+          <Col><Form.Control className="memberPaymentInputPage" inputMode="numeric" placeholder="CVV" value={details.cvv} onChange={update("cvv")} /></Col>
         </Row>
-        <p className="memberPaymentNote mb-0">This is a demo payment. No money will be charged.</p>
-        <Button type="submit" className="memberPaymentButton mt-auto" disabled={submitting}>
+        <p className="memberPaymentNotePage mb-0">This is a demo payment. No money will be charged.</p>
+        <Button type="submit" className="memberPaymentButtonPage mt-auto" disabled={submitting}>
           {submitting ? "Activating membership…" : `Pay R${amount}`}
         </Button>
       </Form>

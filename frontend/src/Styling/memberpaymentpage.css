@@ -62,14 +62,14 @@
   text-transform: uppercase;
 }
 
-.memberPaymentSummary {
+.memberPaymentSummaryPage {
   margin-bottom: 1.5rem;
   padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 0.5rem;
 }
 
-.mpay__heading {
+.memberPaymentHeadingPage {
   margin: 0 0 0.5rem;
   font-family: var(--reg-font-display);
   font-size: 1.25rem;
@@ -77,17 +77,17 @@
   text-transform: uppercase;
 }
 
-.mpay__details { margin: 0; font-size: 0.8rem; }
-.mpay__details div { display: flex; gap: 0.5rem; }
-.mpay__details dt { font-weight: 600; }
-.mpay__details dd { margin: 0; }
+.memberPaymentDetailsPage { margin: 0; font-size: 0.8rem; }
+.memberPaymentDetailsPage div { display: flex; gap: 0.5rem; }
+.memberPaymentDetailsPage dt { font-weight: 600; }
+.memberPaymentDetailsPage dd { margin: 0; }
 
-.mpay__amount { display: flex; flex-direction: column; align-items: flex-end; }
-.mpay__amount-label { font-family: var(--reg-font-display); font-size: 0.9rem; font-weight: 700; }
-.mpay__amount-value { font-family: var(--reg-font-display); font-size: 2.4rem; font-weight: 800; color: var(--orange, #ff9a00); }
+.memberPaymentAmountPage { display: flex; flex-direction: column; align-items: flex-end; }
+.memberPaymentAmountLabelPage { font-family: var(--reg-font-display); font-size: 0.9rem; font-weight: 700; }
+.memberPaymentAmountValuePage { font-family: var(--reg-font-display); font-size: 2.4rem; font-weight: 800; color: var(--orange, #ff9a00); }
 
-.memberPaymentLabel { font-weight: 600; }
-.memberPaymentInput {
+.memberPaymentLabelPage { font-weight: 600; }
+.memberPaymentInputPage {
   min-height: 2.75rem;
   padding: 0.7rem 0.85rem;
   color: var(--white);
@@ -96,17 +96,17 @@
   border-radius: 0.25rem;
 }
 
-.memberPaymentInput::placeholder { color: rgba(255, 255, 255, 0.75); }
-.memberPaymentInput:focus {
+.memberPaymentInputPage::placeholder { color: rgba(255, 255, 255, 0.75); }
+.memberPaymentInputPage:focus {
   color: var(--white);
   background: transparent;
   border-color: var(--orange);
   box-shadow: 0 0 0 0.2rem rgba(255, 158, 0, 0.25);
 }
 
-.memberPaymentAlert { margin: 0; }
-.memberPaymentNote { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
-.memberPaymentButton {
+.memberPaymentAlertPage { margin: 0; }
+.memberPaymentNotePage { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+.memberPaymentButtonPage {
   padding: 0.7rem 1rem;
   color: var(--navy);
   background: var(--orange);
@@ -116,8 +116,8 @@
   text-transform: uppercase;
 }
 
-.memberPaymentButton:hover,
-.memberPaymentButton:focus {
+.memberPaymentButtonPage:hover,
+.memberPaymentButtonPage:focus {
   color: var(--navy);
   background: var(--white);
   border-color: var(--white);
@@ -146,22 +146,22 @@
   .memberPaymentLogoPage img { width: 6rem; }
   .memberPaymentContentPage { padding: 1.5rem 0.75rem; }
 
-  .memberPaymentSummary {
+  .memberPaymentSummaryPage {
     margin-bottom: 1.25rem;
     padding: 0.85rem;
   }
 
-  .mpay__heading {
+  .memberPaymentHeadingPage {
     margin-bottom: 0.65rem;
     font-size: 1.05rem;
   }
 
-  .mpay__details {
+  .memberPaymentDetailsPage {
     font-size: 0.78rem;
     line-height: 1.35;
   }
 
-  .mpay__details div {
+  .memberPaymentDetailsPage div {
     display: grid;
     grid-template-columns: minmax(0, auto) minmax(0, 1fr);
     gap: 0.35rem;
@@ -169,19 +169,19 @@
     margin-bottom: 0.2rem;
   }
 
-  .mpay__details dt,
-  .mpay__details dd {
+  .memberPaymentDetailsPage dt,
+  .memberPaymentDetailsPage dd {
     min-width: 0;
     overflow-wrap: anywhere;
   }
 
-  .mpay__amount {
+  .memberPaymentAmountPage {
     margin-top: 0.85rem;
     padding-top: 0.75rem;
   }
 
-  .mpay__amount-label { font-size: 0.78rem; }
-  .mpay__amount-value { font-size: 2rem; line-height: 1.1; }
+  .memberPaymentAmountLabelPage { font-size: 0.78rem; }
+  .memberPaymentAmountValuePage { font-size: 2rem; line-height: 1.1; }
 }
 
 @media (min-width: 801px) {

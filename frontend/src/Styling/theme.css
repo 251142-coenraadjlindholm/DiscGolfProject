@@ -1,6 +1,6 @@
 /* Shared controls used by the authentication, membership, and registration flows. */
 .reg-input,
-.memberPaymentInput,
+.memberPaymentInputPage,
 .regplayerInputPage,
 .regplayerInputDetailsPage {
   display: block;
@@ -17,14 +17,14 @@
 }
 
 .reg-input::placeholder,
-.memberPaymentInput::placeholder,
+.memberPaymentInputPage::placeholder,
 .regplayerInputPage::placeholder,
 .regplayerInputDetailsPage::placeholder {
   color: rgba(255, 255, 255, 0.72);
 }
 
 .reg-input:focus,
-.memberPaymentInput:focus,
+.memberPaymentInputPage:focus,
 .regplayerInputPage:focus,
 .regplayerInputDetailsPage:focus {
   color: var(--white);
@@ -93,56 +93,56 @@
   background: rgba(6, 22, 51, 0.84);
 }
 
-.memberPaymentLayoutPage .memberPaymentSummary {
+.memberPaymentLayoutPage .memberPaymentSummaryPage {
   color: var(--white);
   background: rgba(8, 51, 125, 0.34);
 }
 
-.memberPaymentLayoutPage .memberPaymentInput {
+.memberPaymentLayoutPage .memberPaymentInputPage {
   color: var(--white) !important;
   background-color: rgba(6, 22, 51, 0.62) !important;
   border-color: rgba(255, 255, 255, 0.58) !important;
 }
 
-.memberPaymentLayoutPage .memberPaymentInput::placeholder {
+.memberPaymentLayoutPage .memberPaymentInputPage::placeholder {
   color: rgba(255, 255, 255, 0.72) !important;
 }
 
-.memberPaymentLayoutPage .memberPaymentInput:focus {
+.memberPaymentLayoutPage .memberPaymentInputPage:focus {
   color: var(--white) !important;
   background-color: rgba(6, 22, 51, 0.85) !important;
   border-color: var(--orange) !important;
 }
 
-.memberPaymentLayoutPage .memberPaymentButton {
+.memberPaymentLayoutPage .memberPaymentButtonPage {
   color: var(--navy) !important;
   background: var(--orange) !important;
   border-color: var(--orange) !important;
 }
 
 @media (max-width: 800px) {
-  .memberPaymentLayoutPage .memberPaymentSummary {
+  .memberPaymentLayoutPage .memberPaymentSummaryPage {
     margin-right: 0;
     margin-left: 0;
     display: block;
   }
 
-  .memberPaymentLayoutPage .mpay__details div {
+  .memberPaymentLayoutPage .memberPaymentDetailsPage div {
     flex-wrap: wrap;
     min-width: 0;
   }
 
-  .memberPaymentLayoutPage .mpay__details dt,
-  .memberPaymentLayoutPage .mpay__details dd {
+  .memberPaymentLayoutPage .memberPaymentDetailsPage dt,
+  .memberPaymentLayoutPage .memberPaymentDetailsPage dd {
     overflow-wrap: anywhere;
   }
 
-  .memberPaymentLayoutPage .memberPaymentSummary > .col {
+  .memberPaymentLayoutPage .memberPaymentSummaryPage > .col {
     width: 100%;
     max-width: 100%;
   }
 
-  .memberPaymentLayoutPage .memberPaymentSummary > .mpay__amount {
+  .memberPaymentLayoutPage .memberPaymentSummaryPage > .memberPaymentAmountPage {
     display: flex;
     width: 100%;
     max-width: 100%;
@@ -152,7 +152,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .memberPaymentLayoutPage .mpay__amount {
+  .memberPaymentLayoutPage .memberPaymentAmountPage {
     align-items: flex-start;
   }
 }
@@ -450,7 +450,7 @@
     flex-direction: column;
   }
 
-  .memberPaymentSummary {
+  .memberPaymentSummaryPage {
     margin-right: 0;
     margin-left: 0;
   }

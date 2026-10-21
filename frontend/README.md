@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# Disc Golf South Africa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Disc Golf South Africa is a full-stack membership and event registration
+application. The frontend is built with React and React Bootstrap, and the
+backend is an Express API backed by MongoDB.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Public landing page with tournament and upcoming event information
+- Member sign-up, login, profile, and membership purchase flows
+- Tournament registration and payment-proof upload
+- Member dashboard
+- Admin dashboard for managing members, events, registrations, and payments
+- Responsive styling for desktop and mobile screens
 
-### `npm start`
+## Project structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```text
+backend/    Express API, MongoDB models, authentication, and uploads
+frontend/   React application and styling
+uploads/    Uploaded payment proofs and event posters
+Procfile    Production start command
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Requirements
 
-### `npm test`
+- Node.js 22 or a compatible current Node.js release
+- npm
+- MongoDB
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## MongoDB configuration
 
-### `npm run build`
+Create `backend/.env` with your normal MongoDB connection and application
+settings:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```env
+MONGODB_URI=your-mongodb-connection-string
+JWT_SECRET=your-secret-at-least-32-characters-long
+CLIENT_URL=http://localhost:3000
+ADMIN_EMAIL=your-admin-email
+ADMIN_PASSWORD=your-admin-password
+PORT=5000
+NODE_ENV=development
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Use a long, unique value for `JWT_SECRET`. The application connects to the
+MongoDB database specified by `MONGODB_URI`; create and manage that database
+through your regular MongoDB setup. Do not commit `.env` files or credentials
+to the repository.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The frontend uses `http://localhost:5000` for the API during development. To
+use another API URL, create `frontend/.env` and set:
 
-### `npm run eject`
+```env
+REACT_APP_API_URL=http://localhost:5000
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install dependencies in both application directories:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm install --prefix backend
+npm install --prefix frontend
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Running locally
 
-## Learn More
+Start the backend in one terminal:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run dev --prefix backend
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Start the frontend in a second terminal:
 
-### Code Splitting
+```bash
+npm start --prefix frontend
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The frontend is available at [http://localhost:3000](http://localhost:3000).
+The API runs at [http://localhost:5000](http://localhost:5000) by default.
 
-### Analyzing the Bundle Size
+## Available frontend scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Run these commands from the `frontend` directory, or use the `--prefix
+frontend` form from the repository root:
 
-### Making a Progressive Web App
+| Command | Description |
+| --- | --- |
+| `npm start` | Start the React development server |
+| `npm test` | Run the test suite in watch mode |
+| `npm run build` | Create an optimized production build in `build/` |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Available backend scripts
 
-### Advanced Configuration
+| Command | Description |
+| --- | --- |
+| `npm start --prefix backend` | Start the production API server |
+| `npm run dev --prefix backend` | Start the API with Node watch mode |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Production build
 
-### Deployment
+From the repository root, install dependencies and build the frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm install --prefix backend
+npm install --prefix frontend
+npm run build --prefix frontend
+```
 
-### `npm run build` fails to minify
+The root `Procfile` starts the backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```text
+web: node backend/src/server.js
+```
+
+In production, configure `NODE_ENV=production`, set `CLIENT_URL` to the
+deployed frontend URL, and provide the production MongoDB connection string
+and authentication credentials through the hosting provider's environment
+settings.
+
+## Styling convention
+
+Page-specific CSS classnames use a camelCase component prefix followed by a
+descriptive role and the `Page` suffix. For example:
+
+```jsx
+<main className="memberPaymentLayoutPage">
+  <h1 className="memberPaymentTitlePage">Become a Member</h1>
+</main>
+```
+
+Keep React classnames and their corresponding CSS selectors synchronized when
+renaming or adding UI elements.
