@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { BrowserRouter, Link, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import DgsaNavbar from "./assets/components/navbar";
 import AnimatedBackground from "./assets/components/animatedbackground";
@@ -27,6 +28,8 @@ import dgsaLogo from "./assets/images/discgolf_logo.png";
 const API_URL =
   process.env.REACT_APP_API_URL ||
   (process.env.NODE_ENV === "production" ? window.location.origin : "http://localhost:5000");
+const SITE_URL = "https://discgolfsummative-7cf2e4163c94.herokuapp.com";
+const SOCIAL_IMAGE_URL = `${SITE_URL}/logo192.png`;
 
 /*Data Given for the App from the figma file*/
 const Events = [
@@ -320,6 +323,27 @@ function Footer() {
 function HomePage() {
   return (
     <>
+      <Helmet>
+        <title>Disc Golf South Africa | Home</title>
+        <meta
+          name="description"
+          content="Official home of Disc Golf South Africa. Discover courses, local events, and join our growing community."
+        />
+        <link rel="canonical" href={`${SITE_URL}/`} />
+        <meta property="og:url" content={`${SITE_URL}/`} />
+        <meta property="og:title" content="Disc Golf South Africa | Home" />
+        <meta
+          property="og:description"
+          content="Official home of Disc Golf South Africa. Discover courses, local events, and join our growing community."
+        />
+        <meta property="og:image" content={SOCIAL_IMAGE_URL} />
+        <meta name="twitter:title" content="Disc Golf South Africa | Home" />
+        <meta
+          name="twitter:description"
+          content="Official home of Disc Golf South Africa. Discover courses, local events, and join our growing community."
+        />
+        <meta name="twitter:image" content={SOCIAL_IMAGE_URL} />
+      </Helmet>
       <DgsaNavbar />
       <main>
         <Hero />
@@ -335,7 +359,26 @@ function RegistrationRoute() {
   const navigate = useNavigate();
   const eventId = new URLSearchParams(window.location.search).get("eventId");
 
-  return <RegistrationFlow eventId={eventId} onBackToDashboard={() => navigate("/")} />;
+  return (
+    <>
+      <Helmet>
+        <title>Tournament Registration | Disc Golf South Africa</title>
+        <meta
+          name="description"
+          content="Register for upcoming disc golf tournaments and championships across South Africa."
+        />
+        <link rel="canonical" href={`${SITE_URL}/registration`} />
+        <meta property="og:url" content={`${SITE_URL}/registration`} />
+        <meta property="og:title" content="Tournament Registration | Disc Golf South Africa" />
+        <meta
+          property="og:description"
+          content="Register for upcoming disc golf tournaments and championships across South Africa."
+        />
+        <meta property="og:image" content={SOCIAL_IMAGE_URL} />
+      </Helmet>
+      <RegistrationFlow eventId={eventId} onBackToDashboard={() => navigate("/")} />
+    </>
+  );
 }
 
 function LoginRoute() {
@@ -343,9 +386,25 @@ function LoginRoute() {
   const { setUser } = useAuth();
 
   return (
-    <LoginPage
-      onGoToSignUp={() => navigate("/signup")}
-      onLogin={async (email, password) => {
+    <>
+      <Helmet>
+        <title>Member Login | Disc Golf South Africa</title>
+        <meta
+          name="description"
+          content="Log in to your Disc Golf South Africa account to manage your membership and event registrations."
+        />
+        <link rel="canonical" href={`${SITE_URL}/login`} />
+        <meta property="og:url" content={`${SITE_URL}/login`} />
+        <meta property="og:title" content="Member Login | Disc Golf South Africa" />
+        <meta
+          property="og:description"
+          content="Log in to your Disc Golf South Africa account to manage your membership and event registrations."
+        />
+        <meta property="og:image" content={SOCIAL_IMAGE_URL} />
+      </Helmet>
+      <LoginPage
+        onGoToSignUp={() => navigate("/signup")}
+        onLogin={async (email, password) => {
         try {
           const response = await fetch(`${API_URL}/api/auth/login`, {
             method: "POST",
@@ -362,8 +421,9 @@ function LoginRoute() {
           return { ok: false, field: "email", message: "Unable to connect to the backend." };
         }
 
-      }}
-    />
+        }}
+      />
+    </>
   );
 }
 
@@ -378,9 +438,25 @@ function SignUpRoute() {
   const navigate = useNavigate();
 
   return (
-    <SignUpPage
-      onGoToLogin={() => navigate("/login")}
-      onSignUp={async ({ name, email, password }) => {
+    <>
+      <Helmet>
+        <title>Join Disc Golf South Africa | Official Membership</title>
+        <meta
+          name="description"
+          content="Create your Disc Golf South Africa account and join the community of players, members, and tournament participants."
+        />
+        <link rel="canonical" href={`${SITE_URL}/signup`} />
+        <meta property="og:url" content={`${SITE_URL}/signup`} />
+        <meta property="og:title" content="Join Disc Golf South Africa | Official Membership" />
+        <meta
+          property="og:description"
+          content="Create your Disc Golf South Africa account and join the community of players, members, and tournament participants."
+        />
+        <meta property="og:image" content={SOCIAL_IMAGE_URL} />
+      </Helmet>
+      <SignUpPage
+        onGoToLogin={() => navigate("/login")}
+        onSignUp={async ({ name, email, password }) => {
         try {
           const response = await fetch(`${API_URL}/api/auth/signup`, {
             method: "POST",
@@ -396,8 +472,9 @@ function SignUpRoute() {
         }
         navigate("/login");
         return { ok: true };
-      }}
-    />
+        }}
+      />
+    </>
   );
 }
 
@@ -443,20 +520,42 @@ function MembershipRoute() {
 
   if (step === "payment") {
     return (
-      <MembershipPaymentPage
-        onPay={async () => {
-          const result = await purchaseMembership();
-          if (result.ok) {
-            setUser(result.data.user);
-            navigate("/dashboard/profile");
-          }
-          return result;
-        }}
-      />
+      <>
+        <Helmet>
+          <title>Join Disc Golf South Africa | Official Membership</title>
+          <meta
+            name="description"
+            content="Become an official Disc Golf South Africa member. Get tournament discounts and support local disc golf."
+          />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <MembershipPaymentPage
+          onPay={async () => {
+            const result = await purchaseMembership();
+            if (result.ok) {
+              setUser(result.data.user);
+              navigate("/dashboard/profile");
+            }
+            return result;
+          }}
+        />
+      </>
     );
   }
 
-  return <MemberTierPage onSelectFree={() => navigate("/dashboard")} onSelectMember={() => setStep("payment")} />;
+  return (
+    <>
+      <Helmet>
+        <title>Join Disc Golf South Africa | Official Membership</title>
+        <meta
+          name="description"
+          content="Become an official Disc Golf South Africa member. Get tournament discounts and support local disc golf."
+        />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      <MemberTierPage onSelectFree={() => navigate("/dashboard")} onSelectMember={() => setStep("payment")} />
+    </>
+  );
 }
 
 function AdminDashboardRoute({ page }) {
