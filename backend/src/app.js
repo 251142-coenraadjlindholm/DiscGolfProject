@@ -15,6 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const frontendBuildPath = path.join(__dirname, "../../frontend/build");
 
+// Google Analytics code to allow React app to show poster images and send analytics data to Google Analytics
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
   contentSecurityPolicy: {
@@ -45,6 +46,7 @@ app.get("/uploads/posters/:filename", async (req, res, next) => {
 
 app.use("/api", routes);
 
+// Heroku code to serve sitemap.xml and React frontend build files
 if (process.env.NODE_ENV === "production") {
   app.get("/sitemap.xml", async (req, res, next) => {
     try {
@@ -69,6 +71,7 @@ if (process.env.NODE_ENV === "production") {
       next(error);
     }
   });
+  // Heroku code to serve React frontend build files
   app.use(express.static(frontendBuildPath));
   app.use((req, res, next) => {
     if ((req.method === "GET" || req.method === "HEAD") && !req.path.startsWith("/api")) {
