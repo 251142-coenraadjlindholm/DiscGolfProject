@@ -180,3 +180,7 @@ Set these config vars on Heroku:
 
 - Never commit `.env` files or credentials. Rotate any secret that has been shared or committed.
 - Payment proofs are not served statically; they are only available to authorised users through `/api/payments/:id/proof`.
+
+## Github Repo's
+- Heroku: https://github.com/251142-coenraadjlindholm/DiscGolfProject.git
+- AWS: https://github.com/251142-coenraadjlindholm/DiscGolf---Copy-AWS.git
